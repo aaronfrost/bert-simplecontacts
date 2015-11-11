@@ -1,0 +1,50 @@
+<div layout="row">
+  <div flex="33">
+    <div class="md-whiteframe-5dp margin-medium padding-medium">
+      <md-input-container>
+        <label>Name</label>
+        <input type="text" ng-model="newUser.name"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Age</label>
+        <input type="number" ng-model="newUser.age"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input type="text" ng-model="newUser.email"/>
+      </md-input-container>
+      <md-button
+          class="md-raised"
+          ng-disabled="newUser.name == undefined || newUser.age == undefined || newUser.email == undefined"
+          ng-click="addPerson()">Add New User</md-button>
+    </div>
+  </div>
+  <div flex="66">
+    <div class="md-whiteframe-5dp margin-medium padding-medium">
+      <md-data-table-toolbar>
+        <h2 class="md-title">Nutrition</h2>
+      </md-data-table-toolbar>
+
+      <md-data-table-container>
+        <table md-data-table md-row-select="selected" md-progress="deferred">
+          <thead md-order="query.order" md-trigger="onOrderChange">
+          <tr>
+            <th name="Name" order-by="name"></th>
+            <th numeric name="Age" order-by="age"></th>
+            <th name="Email" order-by="email"></th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr md-auto-select ng-repeat="p in people | orderBy:query.order">
+            <td>{{p.name}}</td>
+            <td>{{p.age}}</td>
+            <td>{{p.email}}</td>
+
+          </tr>
+          </tbody>
+        </table>
+      </md-data-table-container>
+    </div>
+  </div>
+</div>

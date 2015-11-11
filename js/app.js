@@ -1,0 +1,1 @@
+angular.module('app',['md.data.table','ngMaterial']);
